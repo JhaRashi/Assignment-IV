@@ -1,4 +1,4 @@
-name: Build and Run Application
+name: Build and Run Java Application
 
 on:
   push:
@@ -7,25 +7,21 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
       
-    - name: Pull Git content
-      run: git pull
-      
-    - name: Set up Java/Python
-      uses: actions/setup-java@v2  # For Java, or use setup-python for Python
+    - name: Set up JDK
+      uses: actions/setup-java@v2
       with:
         java-version: '11'  # Adjust version as needed
-
-    - name: Build and Run Application
+      
+    - name: Build Java Application
       run: |
-        # Replace these commands with your actual commands to compile/run the application
-        # For Java:
-        # javac -d bin src/*.java
-        # java -cp bin MainClass
-        # For Python:
-        # python main.py
+        mkdir bin
+        javac -d bin src/*.java
+        
+    - name: Run Java Application
+      run: java -cp bin MainClass  # Adjust MainClass to your main class name
