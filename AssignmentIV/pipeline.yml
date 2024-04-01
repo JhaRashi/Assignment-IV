@@ -1,0 +1,31 @@
+name: Build and Run Application
+
+on:
+  push:
+    branches:
+      - develop
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+      
+    - name: Pull Git content
+      run: git pull
+      
+    - name: Set up Java/Python
+      uses: actions/setup-java@v2  # For Java, or use setup-python for Python
+      with:
+        java-version: '11'  # Adjust version as needed
+
+    - name: Build and Run Application
+      run: |
+        # Replace these commands with your actual commands to compile/run the application
+        # For Java:
+        # javac -d bin src/*.java
+        # java -cp bin MainClass
+        # For Python:
+        # python main.py
