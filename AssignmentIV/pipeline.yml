@@ -16,7 +16,7 @@ jobs:
     - name: Set up JDK
       uses: actions/setup-java@v2
       with:
-        java-version: '11'  # Adjust version as needed
+        java-version: '11' 
       
     - name: Build Java Application
       run: |
@@ -24,4 +24,4 @@ jobs:
         javac -d bin src/*.java
         
     - name: Run Java Application
-      run: java -cp bin MainClass  # Adjust MainClass to your main class name
+      run: java -cp bin JavaApplicationSum  
